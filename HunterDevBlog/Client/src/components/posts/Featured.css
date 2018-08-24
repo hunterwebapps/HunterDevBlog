@@ -1,0 +1,93 @@
+﻿.featured-carousel .carousel-inner {
+    height: 500px;
+}
+
+.featured-carousel .item {
+    transition-property: opacity;
+    height: 100%;
+    background-position: center right;
+    background-size: 68%;
+    background-repeat: no-repeat;
+}
+
+.featured-carousel .item > img {
+    position: absolute;
+    width: 68%;
+    right: 0 !important;
+    top: 0 !important;
+}
+
+.featured-carousel .item > .carousel-caption {
+    position: absolute;
+    width: 32%;
+    left: 0 !important;
+    top: 0 !important;
+    background-color: #ededed;
+    color: #777777;
+    text-shadow: none;
+    height: 100%;
+    text-align: left;
+    padding: 40px 64px;
+    line-height: 40px;
+}
+
+    .featured-carousel .item > .carousel-caption h3 {
+        margin: 10px 0 20px 0;
+    }
+
+.featured-carousel .carousel-control {
+    background-color: #000;
+    background-image: none;
+    left: 32%;
+    bottom: 0;
+    top: unset;
+    width: 40px;
+    height: 40px;
+}
+
+    .featured-carousel .carousel-control.right {
+        margin-left: 40px;
+    }
+
+    .featured-carousel .carousel-control > i {
+        position: relative;
+        top: 5px;
+        font-size: 30px;
+    }
+
+
+.carousel-fade .carousel-inner .item {
+    transition-property: opacity;
+    -webkit-transition-property: opacity;
+    -moz-transition-property: opacity;
+    -ms-transition-property: opacity;
+    -o-transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .item,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+    opacity: 0;
+}
+
+.carousel-fade .carousel-inner .active,
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+    opacity: 1;
+}
+
+    .carousel-fade .carousel-inner .next,
+    .carousel-fade .carousel-inner .prev,
+    .carousel-fade .carousel-inner .active.left,
+    .carousel-fade .carousel-inner .active.right {
+        left: 0;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+    }
+
+.carousel-fade .carousel-control {
+    z-index: 2;
+}

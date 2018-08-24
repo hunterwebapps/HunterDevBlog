@@ -1,0 +1,3 @@
+﻿export const
+    SITE_TITLE = 'HUNTER DEV BLOG',
+    SITE_SLOGAN = 'MY WITTY SLOGAN GOES HERE...'

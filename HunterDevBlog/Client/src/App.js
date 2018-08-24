@@ -1,21 +1,35 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import { Switch, Route } from 'react-router-dom'
+import './App.css'
+import Layout from './components/Layout'
+import Home from './components/Home'
+import PostsAdmin from './components/admin/PostsAdmin';
+import FullPost from './components/posts/FullPost';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+
+class App extends React.Component {
+    render() {
+        return (
+            <Layout>
+                <TransitionGroup style={this.props.location.pathname === '/' ? { height: '100%' } : {}}>
+                    <CSSTransition
+                        key={this.props.location.pathname}
+                        classNames="fade"
+                        timeout={500}
+                        mountOnEnter
+                        unmountOnExit
+                    >
+                        <Switch location={this.props.location}>
+                            <Route exact path="/" component={Home} />
+                            <Route path="/Post/:id" component={FullPost} />
+                            <Route path="/Admin/Posts" component={PostsAdmin} />
+                        </Switch>
+                    </CSSTransition>
+                </TransitionGroup>
+            </Layout>
+        );
+    }
 }
 
 export default App;

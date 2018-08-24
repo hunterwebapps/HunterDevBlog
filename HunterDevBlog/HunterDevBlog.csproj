@@ -234,6 +234,9 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImagesController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -242,12 +245,41 @@
     <Compile Include="Migrations\201808222044531_Initial.Designer.cs">
       <DependentUpon>201808222044531_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808231909486_User Settings.cs" />
+    <Compile Include="Migrations\201808231909486_User Settings.Designer.cs">
+      <DependentUpon>201808231909486_User Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808240928299_Posts And Images.cs" />
+    <Compile Include="Migrations\201808240928299_Posts And Images.Designer.cs">
+      <DependentUpon>201808240928299_Posts And Images.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808241051510_Featured Post Property.cs" />
+    <Compile Include="Migrations\201808241051510_Featured Post Property.Designer.cs">
+      <DependentUpon>201808241051510_Featured Post Property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808241452488_Tags and Preview.cs" />
+    <Compile Include="Migrations\201808241452488_Tags and Preview.Designer.cs">
+      <DependentUpon>201808241452488_Tags and Preview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808242240469_Tags to Tag.cs" />
+    <Compile Include="Migrations\201808242240469_Tags to Tag.Designer.cs">
+      <DependentUpon>201808242240469_Tags to Tag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BindingModels\ImageBindingModels.cs" />
+    <Compile Include="Models\BindingModels\PostBindingModels.cs" />
+    <Compile Include="Models\BindingModels\UserBindingModels.cs" />
+    <Compile Include="Models\Entities\Image.cs" />
+    <Compile Include="Models\Entities\Post.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ViewModels\ImageViewModels.cs" />
+    <Compile Include="Models\ViewModels\PostViewModels.cs" />
+    <Compile Include="Models\ViewModels\UserViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Providers\NoBufferPolicySelector.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -256,13 +288,61 @@
     <Content Include="Client\.gitignore" />
     <Content Include="Client\public\favicon.ico" />
     <Content Include="Client\public\index.html" />
+    <Content Include="Client\src\components\admin\PostsAdmin.js" />
+    <Content Include="Client\src\components\links\PostLink.js" />
+    <Content Include="Client\src\components\links\TagLink.js" />
+    <Content Include="Client\src\components\posts\Feed.container.js" />
+    <Content Include="Client\src\components\posts\Feed.presentation.js" />
+    <Content Include="Client\src\components\posts\FullPost.js" />
+    <Content Include="Client\src\components\posts\Preview.css" />
+    <Content Include="Client\src\components\posts\Preview.js" />
+    <Content Include="Client\src\components\shared\EmbeddedGist.js" />
+    <Content Include="Client\src\components\shared\ImageUploader.js" />
+    <Content Include="Client\src\gist.css" />
+    <Content Include="Client\src\images\shape.png" />
+    <Content Include="Client\src\skins\lightgray\content.inline.min.css" />
+    <Content Include="Client\src\skins\lightgray\content.min.css" />
+    <Content Include="Client\src\skins\lightgray\content.mobile.min.css" />
+    <Content Include="Client\src\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Client\src\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Client\src\skins\lightgray\img\anchor.gif" />
+    <Content Include="Client\src\skins\lightgray\img\loader.gif" />
+    <Content Include="Client\src\skins\lightgray\img\object.gif" />
+    <Content Include="Client\src\skins\lightgray\img\trans.gif" />
+    <Content Include="Client\src\skins\lightgray\skin.min.css" />
+    <Content Include="Client\src\skins\lightgray\skin.mobile.min.css" />
     <Content Include="Client\src\App.css" />
     <Content Include="Client\src\App.js" />
-    <Content Include="Client\src\App.test.js" />
+    <Content Include="Client\src\components\admin\PostEditor.js" />
+    <Content Include="Client\src\components\Home.js" />
+    <Content Include="Client\src\components\Layout.css" />
+    <Content Include="Client\src\components\Layout.js" />
+    <Content Include="Client\src\components\shared\ErrorCatch.js" />
+    <Content Include="Client\src\components\posts\Featured.container.js" />
+    <Content Include="Client\src\components\posts\Featured.css" />
+    <Content Include="Client\src\components\posts\Featured.presentation.js" />
+    <Content Include="Client\src\components\shared\FormikFields.js" />
+    <Content Include="Client\src\components\shared\LoginDialog.js" />
+    <Content Include="Client\src\components\shared\RegisterDialog.js" />
+    <Content Include="Client\src\components\shared\SubscribeForm.js" />
+    <Content Include="Client\src\constants.js" />
     <Content Include="Client\src\index.css" />
     <Content Include="Client\src\index.js" />
     <Content Include="Client\src\logo.svg" />
     <Content Include="Client\src\registerServiceWorker.js" />
+    <Content Include="Client\src\store\api.js" />
+    <Content Include="Client\src\store\main.reducer.js" />
+    <Content Include="Client\src\store\main.saga.js" />
+    <Content Include="Client\src\store\modules\posts\posts.actions.js" />
+    <Content Include="Client\src\store\modules\posts\posts.reducer.js" />
+    <Content Include="Client\src\store\modules\posts\posts.saga.js" />
+    <Content Include="Client\src\store\modules\posts\posts.types.js" />
+    <Content Include="Client\src\store\modules\users\users.actions.js" />
+    <Content Include="Client\src\store\modules\users\users.reducer.js" />
+    <Content Include="Client\src\store\modules\users\users.saga.js" />
+    <Content Include="Client\src\store\modules\users\users.types.js" />
+    <Content Include="Client\src\store\store.js" />
+    <Content Include="Client\src\stories\index.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -296,6 +376,13 @@
     </Content>
     <Content Include="Client\package.json" />
     <Content Include="Client\public\manifest.json" />
+    <Content Include="Client\src\skins\lightgray\fonts\tinymce-mobile.woff" />
+    <Content Include="Client\src\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Client\src\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Client\src\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Client\src\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Client\src\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Client\src\skins\lightgray\fonts\tinymce.woff" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -308,7 +395,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -325,6 +414,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Client\src\store\middleware\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -358,6 +448,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201808222044531_Initial.resx">
       <DependentUpon>201808222044531_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808231909486_User Settings.resx">
+      <DependentUpon>201808231909486_User Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808240928299_Posts And Images.resx">
+      <DependentUpon>201808240928299_Posts And Images.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808241051510_Featured Post Property.resx">
+      <DependentUpon>201808241051510_Featured Post Property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808241452488_Tags and Preview.resx">
+      <DependentUpon>201808241452488_Tags and Preview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808242240469_Tags to Tag.resx">
+      <DependentUpon>201808242240469_Tags to Tag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,49 @@
+﻿.navbar-brand,
+.navbar-nav > li > a {
+    line-height: 80px;
+    height: 80px;
+    padding-top: 0;
+    color: #777;
+    text-transform: uppercase;
+}
+
+    .navbar-nav > li > a:hover {
+        color: #f74d65 !important;
+    }
+
+.home-text h2,
+.home-text h3 {
+    color: #010101;
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 13px;
+}
+
+.home-text h3 {
+    font-size: 32px;
+    letter-spacing: 8px;
+}
+
+.home-text p {
+    color: #404040;
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 20px;
+}
+
+.cs-btn {
+    color: #fff;
+    background-color: #000;
+    border-radius: 0;
+    outline: none;
+    padding: 10px 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 1s;
+}
+
+    .cs-btn:hover,
+    .cs-btn:focus {
+        background: #f74d65;
+        border-color: #f74d65;
+    }

@@ -1,0 +1,45 @@
+﻿.thumbnail.preview {
+    padding: 0;
+    margin-top: 50px;
+    border: none;
+}
+
+    .thumbnail.preview > .image {
+        background-size: cover;
+        background-position: center center;
+        padding-bottom: 56.25%;
+    }
+
+    .thumbnail.preview > .caption {
+        padding: 40px 64px;
+        text-align: center;
+        background-color: #ededed;
+    }
+
+        .thumbnail.preview > .caption .tag {
+            letter-spacing: 1px;
+            padding: 5px 10px;
+        }
+
+        .thumbnail.preview > .caption > h1 {
+            color: #010101;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+        }
+
+        .thumbnail.preview > .caption > h2 {
+            color: #404040;
+            font-size: 24px;
+            text-transform: uppercase;
+            font-weight: lighter;
+            margin-bottom: 15px;
+        }
+
+        .thumbnail.preview > .caption > p {
+            margin-top: 30px;
+            text-align: left;
+            font-size: 14px;
+            color: #272727;
+            line-height: 21px;
+        }
