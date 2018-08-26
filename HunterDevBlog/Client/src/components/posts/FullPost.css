@@ -1,0 +1,13 @@
+﻿.full-post h1 {
+    color: #010101;
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+}
+
+.full-post h3 {
+    color: #404040;
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 20px;
+}

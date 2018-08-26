@@ -265,6 +265,10 @@
     <Compile Include="Migrations\201808242240469_Tags to Tag.Designer.cs">
       <DependentUpon>201808242240469_Tags to Tag.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808251924310_Cant Remember.cs" />
+    <Compile Include="Migrations\201808251924310_Cant Remember.Designer.cs">
+      <DependentUpon>201808251924310_Cant Remember.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -293,11 +297,26 @@
     <Content Include="Client\src\components\links\TagLink.js" />
     <Content Include="Client\src\components\posts\Feed.container.js" />
     <Content Include="Client\src\components\posts\Feed.presentation.js" />
-    <Content Include="Client\src\components\posts\FullPost.js" />
+    <Content Include="Client\src\components\posts\FullPost.container.js" />
+    <Content Include="Client\src\components\posts\FullPost.css" />
+    <Content Include="Client\src\components\posts\FullPost.presentation.js" />
     <Content Include="Client\src\components\posts\Preview.css" />
     <Content Include="Client\src\components\posts\Preview.js" />
+    <Content Include="Client\src\components\posts\RecentPosts.container.js" />
+    <Content Include="Client\src\components\posts\RecentPosts.css" />
+    <Content Include="Client\src\components\posts\RecentPosts.presentation.js" />
     <Content Include="Client\src\components\shared\EmbeddedGist.js" />
+    <Content Include="Client\src\components\shared\FollowLinks.css" />
+    <Content Include="Client\src\components\shared\FollowLinks.js" />
     <Content Include="Client\src\components\shared\ImageUploader.js" />
+    <Content Include="Client\src\components\shared\ScrollToTop.js" />
+    <Content Include="Client\src\components\shared\Sidebar.css" />
+    <Content Include="Client\src\components\shared\Sidebar.js" />
+    <Content Include="Client\src\components\tags\AllTags.container.js" />
+    <Content Include="Client\src\components\tags\AllTags.css" />
+    <Content Include="Client\src\components\tags\AllTags.presentation.js" />
+    <Content Include="Client\src\components\tags\TagPosts.css" />
+    <Content Include="Client\src\components\tags\TagPosts.js" />
     <Content Include="Client\src\gist.css" />
     <Content Include="Client\src\images\shape.png" />
     <Content Include="Client\src\skins\lightgray\content.inline.min.css" />
@@ -463,6 +482,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808242240469_Tags to Tag.resx">
       <DependentUpon>201808242240469_Tags to Tag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808251924310_Cant Remember.resx">
+      <DependentUpon>201808251924310_Cant Remember.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

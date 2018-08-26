@@ -26,21 +26,21 @@ function FeaturedPresentation({ posts }) {
                             backgroundImage: `url('${post.Images[0].Path.replace('_thumb', '')}')`
                         }}
                     >
-                        <Carousel.Caption>
-                            <h4>Featured Post</h4>
-                            <PostLink id={post.Id} title={post.Title}>
+                        <PostLink id={post.Id} title={post.Title}>
+                            <Carousel.Caption>
+                                <h4>Featured Post</h4>
                                 <h3>{post.Title}</h3>
                                 <p>{post.Subtitle}</p>
-                            </PostLink>
-                            {post.CreatedBy &&
+                                {post.CreatedBy &&
+                                    <p>
+                                        {`by `}<strong>{post.CreatedBy.FullName}</strong>
+                                    </p>
+                                }
                                 <p>
-                                    {`by `}<strong>{post.CreatedBy.FullName}</strong>
+                                    {`on `}<strong>{post.TimeCreated}</strong>
                                 </p>
-                            }
-                            <p>
-                                {`on `}<strong>{post.TimeCreated}</strong>
-                            </p>
-                        </Carousel.Caption>
+                            </Carousel.Caption>
+                        </PostLink>
                     </Carousel.Item>
                 )}
             </Carousel>

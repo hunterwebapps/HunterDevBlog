@@ -23,11 +23,16 @@ export const GetUserById = (state, id) => state.users.all.find(user => user.Id =
 
 // Posts
 
-export const GetPosts = state =>
-    state.posts.all.map(post => {
+export const GetPosts = (state, limit) => {
+    const posts = state.posts.all.map(post => {
         post.CreatedBy = GetUserById(state, post.CreatedById)
         return post
     })
+    if (limit)
+        return posts.splice(0, limit)
+
+    return posts
+}
 
 export const GetFeaturedPosts = state =>
     state.posts.all.reduce((output, post) => {
@@ -44,3 +49,22 @@ export const GetPostById = (state, id) => {
     post.CreatedBy = GetUserById(state, post.CreatedById)
     return post
 }
+
+export const GetPostsByTag = (state, tag) =>
+    state.posts.all.reduce((posts, post) => {
+        if (post.Tag !== tag)
+            return posts
+        post.CreatedBy = GetUserById(state, post.CreatedById)
+        posts.push(post)
+        return posts
+    }, [])
+
+// Tags
+
+export const GetTags = state =>
+    state.posts.all.reduce((tags, post) => {
+        if (!tags.includes(post.Tag))
+            tags.push(post.Tag)
+
+        return tags
+    }, [])

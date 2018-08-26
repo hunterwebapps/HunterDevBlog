@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap'
 import './Preview.css'
 import PostLink from '../links/PostLink';
 import TagLink from '../links/TagLink';
+import divider from '../../images/shape.png'
 
 Preview.displayName = 'Post Preview'
 
@@ -24,7 +25,6 @@ function Preview({ post }) {
             }
             {post &&
                 <div className="caption">
-
                     <TagLink text={post.Tag}>
                         <Button
                             bsStyle="primary"
@@ -35,6 +35,7 @@ function Preview({ post }) {
                     </TagLink>
                     <h1>{post.Title}</h1>
                     <h2>{post.Subtitle}</h2>
+                    <img src={divider} alt="Divider" />
                     {post.CreatedBy &&
                         <h5 className="text-muted">
                             {`by ${post.CreatedBy.FullName} On ${post.TimeCreated || 'Now'}`}

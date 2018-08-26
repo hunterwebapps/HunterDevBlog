@@ -11,11 +11,14 @@ import { history, store } from './store/store'
 
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
+import ScrollToTop from './components/shared/ScrollToTop';
 
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            <Route path="/" component={App} />
+            <ScrollToTop>
+                <Route path="/" component={App} />
+            </ScrollToTop>
         </ConnectedRouter>
     </Provider>,
     document.getElementById('root')

@@ -2,10 +2,11 @@
 import { } from 'prop-types'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { SITE_TITLE, SITE_SLOGAN } from '../constants'
-import Featured from './posts/Featured.container';
-import FeedContainer from './posts/Feed.container';
+import Featured from './posts/Featured.container'
+import FeedContainer from './posts/Feed.container'
 
 import divider from '../images/shape.png'
+import Sidebar from './shared/Sidebar'
 
 Home.displayName = 'Home'
 
@@ -22,11 +23,11 @@ function Home() {
                 </Col>
             </Row>
             <Row>
-                <Col sm={8} md={9}>
+                <Col md={8} lg={9}>
                     <FeedContainer />
                 </Col>
-                <Col sm={4} md={3}>
-
+                <Col md={4} lg={3}>
+                    <Sidebar recentCount={3} />
                 </Col>
             </Row>
         </Grid>

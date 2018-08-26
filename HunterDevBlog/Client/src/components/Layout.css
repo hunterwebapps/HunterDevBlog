@@ -11,6 +11,10 @@
         color: #f74d65 !important;
     }
 
+    .navbar-toggle {
+        margin-top: 20px;
+    }
+
 .home-text h2,
 .home-text h3 {
     color: #010101;

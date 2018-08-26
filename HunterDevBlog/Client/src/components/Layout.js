@@ -15,11 +15,10 @@ import { connect } from 'react-redux'
 import header_bg from '../images/header_bg.png'
 import logo from '../images/logo.png'
 import './Layout.css'
-import LoginDialog from './shared/LoginDialog';
-import RegisterDialog from './shared/RegisterDialog';
-import { GetCurrentUser } from '../store/main.reducer';
+import LoginDialog from './shared/LoginDialog'
+import RegisterDialog from './shared/RegisterDialog'
+import { GetCurrentUser } from '../store/main.reducer'
 import { Register, Login, Logout } from '../store/modules/users/users.actions';
-import SubscribeForm from './shared/SubscribeForm';
 
 const navbarStyle = {
     backgroundImage: `url('${header_bg}')`,
@@ -96,6 +95,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(
                         </Navbar.Header>
                         <Navbar.Collapse>
                             <Nav>
+                                <LinkContainer to="/About">
+                                    <NavItem eventKey="about">
+                                        {'The Author'}
+                                    </NavItem>
+                                </LinkContainer>
                                 {user.Username ?
                                     <React.Fragment>
                                         {user.Administrator &&
@@ -133,9 +137,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(
                                     </NavItem>
                                 }
                             </Nav>
-                            <Navbar.Form pullRight style={{ marginTop: '23px' }}>
-                                <SubscribeForm />
-                            </Navbar.Form>
                         </Navbar.Collapse>
                     </Navbar>
                     {children}

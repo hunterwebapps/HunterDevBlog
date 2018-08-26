@@ -5,7 +5,8 @@ import './App.css'
 import Layout from './components/Layout'
 import Home from './components/Home'
 import PostsAdmin from './components/admin/PostsAdmin';
-import FullPost from './components/posts/FullPost';
+import FullPost from './components/posts/FullPost.container';
+import TagPosts from './components/tags/TagPosts';
 
 
 class App extends React.Component {
@@ -21,9 +22,10 @@ class App extends React.Component {
                         unmountOnExit
                     >
                         <Switch location={this.props.location}>
-                            <Route exact path="/" component={Home} />
-                            <Route path="/Post/:id" component={FullPost} />
-                            <Route path="/Admin/Posts" component={PostsAdmin} />
+                            <Route exact path="/" render={() => <div className="absoluteFull"><Home /></div>} />
+                            <Route path="/Post/:id" render={() => <div className="absoluteFull"><FullPost /></div>} />
+                            <Route path="/Tag/:tag" render={() => <div className="absoluteFull"><TagPosts /></div>} />
+                            <Route path="/Admin/Posts" render={() => <div className="absoluteFull"><PostsAdmin /></div>} />
                         </Switch>
                     </CSSTransition>
                 </TransitionGroup>

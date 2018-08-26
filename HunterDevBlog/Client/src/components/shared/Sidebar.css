@@ -1,0 +1,13 @@
+﻿/*.sidebar {
+    position: sticky;
+    top: 20px;
+}*/
+
+.sidebar-panel {
+    margin-bottom: 15px;
+}
+
+    .sidebar-panel h1 {
+        color: #010101;
+        text-transform: uppercase;
+    }

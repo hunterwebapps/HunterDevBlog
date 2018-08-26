@@ -1,6 +1,6 @@
 ﻿.thumbnail.preview {
     padding: 0;
-    margin-top: 50px;
+    margin-top: 20px;
     border: none;
 }
 
@@ -42,4 +42,10 @@
             font-size: 14px;
             color: #272727;
             line-height: 21px;
+        }
+
+        @media (max-width: 768px) {
+            .thumbnail.preview > .caption {
+                padding: 20px 32px;
+            }
         }

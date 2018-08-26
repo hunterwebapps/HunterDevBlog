@@ -40,7 +40,7 @@ namespace HunterDevBlog.Models.ViewModels
                 Content = post.Content,
                 Featured = post.Featured,
                 Images = post.Images.ConvertAll<ImageViewModel>(i => i),
-                TimeCreated = post.TimeCreated.ToString(),
+                TimeCreated = post.TimeCreated.ToString("MMM dd, yyyy"),
                 CreatedById = post.CreatedById
             };
         }

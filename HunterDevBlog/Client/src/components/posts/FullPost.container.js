@@ -1,10 +1,11 @@
 ﻿import * as React from 'react'
 import { object } from 'prop-types'
-import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { GetPostById } from '../../store/main.reducer';
+import FullPostPresentation from './FullPost.presentation';
 
-FullPost.displayName = 'Full Post'
+FullPost.displayName = 'Full Post Container'
 
 FullPost.propTypes = {
     post: object.isRequired
@@ -15,11 +16,7 @@ const mapStateToProps = (state, { match }) => ({
 })
 
 function FullPost({ post }) {
-    return (
-        <Grid>
-
-        </Grid>
-    )
+    return <FullPostPresentation post={post} />
 }
 
-export default connect(mapStateToProps, {})(FullPost)
+export default withRouter(connect(mapStateToProps, {})(FullPost))
