@@ -4,6 +4,7 @@ import RecentPosts from '../posts/RecentPosts.container'
 import AllTags from '../tags/AllTags.container'
 import './Sidebar.css'
 import FollowLinks from './FollowLinks'
+import SubscribeForm from '../subscriptions/SubscribeForm';
 
 Sidebar.displayName = 'Sidebar'
 
@@ -15,6 +16,9 @@ Sidebar.propTypes = {
 function Sidebar({ recentCount, style = {} }) {
     return (
         <div className="sidebar">
+            <div className="sidebar-panel">
+                <SubscribeForm />
+            </div>
             <div className="sidebar-panel">
                 <RecentPosts recentCount={recentCount} />
             </div>

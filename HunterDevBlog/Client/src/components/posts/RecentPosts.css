@@ -31,15 +31,3 @@
 .recent-posts h5 {
     color: #404040 !important;
 }
-
-@media(max-width: 991px) {
-    .recent-posts {
-        width: 50%;
-    }
-}
-
-@media(max-width: 420px) {
-    .recent-posts {
-        width: 100%;
-    }
-}

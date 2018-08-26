@@ -21,6 +21,10 @@ export const GetCurrentUser = state => state.users.current
 
 export const GetUserById = (state, id) => state.users.all.find(user => user.Id === id)
 
+export const GetLoginDialogState = state => state.users.loginDialog
+
+export const GetRegisterDialogState = state => state.users.registerDialog
+
 // Posts
 
 export const GetPosts = (state, limit) => {

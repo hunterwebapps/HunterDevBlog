@@ -45,6 +45,7 @@ namespace HunterDevBlog.Models
 
         public DbSet<Post> Posts { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -80,6 +81,11 @@ namespace HunterDevBlog.Models
             var image = modelBuilder.Entity<Image>();
             image.Property(o => o.Path)
                 .HasMaxLength(500)
+                .IsRequired();
+
+            var subscribe = modelBuilder.Entity<Subscription>();
+            subscribe.Property(o => o.EmailAddress)
+                .HasMaxLength(254)
                 .IsRequired();
         }
     }

@@ -1,14 +1,18 @@
 ﻿import * as TYPES from './users.types'
 import { Users } from '../../api'
-import { takeLatest, call, put } from 'redux-saga/effects'
-import { SetUser, SetUsers, GetUsersFailure, GetUsersRequest } from './users.actions';
+import { takeLatest, call, put, select } from 'redux-saga/effects'
+import { SetUser, SetUsers, GetUsersFailure, GetUsersRequest, SetLoginDialog, SetRegisterDialog } from './users.actions';
 import { GetPostsRequest } from '../posts/posts.actions';
+import { GetCurrentUser, GetLoginDialogState, GetRegisterDialogState } from '../../main.reducer';
 
 export default [
     takeLatest(TYPES.LOGIN, LoginSaga),
     takeLatest(TYPES.REGISTER, RegisterSaga),
     takeLatest(TYPES.LOGOUT, LogoutSaga),
-    takeLatest(TYPES.GET_USERS_REQUEST, GetUsersSaga)
+    takeLatest(TYPES.GET_USERS_REQUEST, GetUsersSaga),
+    takeLatest(TYPES.SHOW_LOGIN_DIALOG, ShowLoginDialogSaga),
+    takeLatest(TYPES.SHOW_REGISTER_DIALOG, ShowRegisterDialogSaga),
+    takeLatest(TYPES.SUBSCRIBE_USER, SubscribeSaga)
 ]
 
 function* LoginSaga({ payload, meta }) {
@@ -55,3 +59,59 @@ function* GetUsersSaga() {
         yield put(GetUsersFailure(res))
     }
 }
+
+function* ShowLoginDialogSaga({ payload }) {
+    const user = yield select(GetCurrentUser)
+
+    if (user.Id)
+        return
+
+    if (payload) {
+        const registerDialog = yield select(GetRegisterDialogState)
+        if (registerDialog)
+            yield put(SetRegisterDialog(false))
+    }
+
+    yield put(SetLoginDialog(payload))
+}
+
+function* ShowRegisterDialogSaga({ payload }) {
+    const user = yield select(GetCurrentUser)
+
+    if (user.Id)
+        return
+
+    if (payload) {
+        const loginDialog = yield select(GetLoginDialogState)
+        if (loginDialog)
+            yield put(SetLoginDialog(false))
+    }
+
+    yield put(SetRegisterDialog(payload))
+}
+
+function* SubscribeSaga({ payload, meta }) {
+    const { navigator } = window
+    const copy = {}
+
+    for (let i in navigator)
+        copy[i] = navigator[i]
+
+    delete copy.plugins
+    delete copy.mimeTypes
+
+    const subscribeModel = {
+        EmailAddress: payload,
+        Browser: JSON.stringify(copy)
+    }
+
+    const res = yield call(Users.Subscribe, subscribeModel)
+
+    if (res && res.status === 200) {
+        meta.resetForm()
+    } else {
+        console.log(res)
+    }
+
+    meta.setSubmitting(false)
+}   

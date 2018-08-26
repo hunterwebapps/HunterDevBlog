@@ -21,15 +21,3 @@
     padding: 5px 10px;
     margin-right: 10px;
 }
-
-@media(max-width: 991px) {
-    .all-tags {
-        width: 50%;
-    }
-}
-
-@media(max-width: 420px) {
-    .all-tags {
-        width: 100%;
-    }
-}

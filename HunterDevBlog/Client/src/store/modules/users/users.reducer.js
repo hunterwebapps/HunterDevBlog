@@ -2,7 +2,9 @@
 
 const initialState = {
     all: [],
-    current: {}
+    current: {},
+    loginDialog: false,
+    registerDialog: false
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -17,6 +19,18 @@ export default (state = initialState, { type, payload }) => {
             state = {
                 ...state,
                 all: payload
+            }
+            return state
+        case TYPES.SET_LOGIN_DIALOG:
+            state = {
+                ...state,
+                loginDialog: payload
+            }
+            return state
+        case TYPES.SET_REGISTER_DIALOG:
+            state = {
+                ...state,
+                registerDialog: payload
             }
             return state
         default:

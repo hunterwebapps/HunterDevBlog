@@ -53,8 +53,11 @@ export const Users = {
     Get: async (userId = '') =>
         await axios.get(`/api/Users/${userId}`)
             .catch(err => err),
-    Subscribe: async email =>
-        await axios.get(`/api/Users/Subscribe/${email}/`)
+    Subscribe: async subscribeModel =>
+        await axios.post(`/api/Subscribe`, subscribeModel)
+            .catch(err => err),
+    Unsubscribe: async subscriptionId =>
+        await axios.get(`/api/Unsubscribe/${subscriptionId}`)
             .catch(err => err)
 }
 

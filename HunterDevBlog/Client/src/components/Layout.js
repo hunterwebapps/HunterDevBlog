@@ -1,5 +1,5 @@
 ﻿import * as React from 'react'
-import { object, func } from 'prop-types'
+import { object, func, bool } from 'prop-types'
 import {
     Navbar,
     Nav,
@@ -17,8 +17,8 @@ import logo from '../images/logo.png'
 import './Layout.css'
 import LoginDialog from './shared/LoginDialog'
 import RegisterDialog from './shared/RegisterDialog'
-import { GetCurrentUser } from '../store/main.reducer'
-import { Register, Login, Logout } from '../store/modules/users/users.actions';
+import { GetCurrentUser, GetLoginDialogState, GetRegisterDialogState } from '../store/main.reducer'
+import { Register, Login, Logout, ShowLoginDialog, ShowRegisterDialog } from '../store/modules/users/users.actions';
 
 const navbarStyle = {
     backgroundImage: `url('${header_bg}')`,
@@ -31,50 +31,49 @@ const navbarStyle = {
 }
 
 const mapStateToProps = state => ({
-    user: GetCurrentUser(state)
+    user: GetCurrentUser(state),
+    loginDialog: GetLoginDialogState(state),
+    registerDialog: GetRegisterDialogState(state)
 })
 
 const mapDispatchToProps = {
     Login,
     Register,
-    Logout
+    Logout,
+    ShowLoginDialog,
+    ShowRegisterDialog
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
     class Layout extends React.PureComponent {
-        state = {
-            showLogin: null,
-            showAdmin: false
-        }
-
         static displayName = 'Layout'
 
         static propTypes = {
             user: object.isRequired,
             Login: func.isRequired,
             Register: func.isRequired,
-            Logout: func.isRequired
+            Logout: func.isRequired,
+            ShowLoginDialog: func.isRequired,
+            ShowRegisterDialog: func.isRequired,
+            loginDialog: bool.isRequired,
+            registerDialog: bool.isRequired
         }
 
         componentDidMount() {
             this.props.Login()
         }
 
-        loginState = {
-            LOGIN: true,
-            REGISTER: false,
-            NONE: null
-        }
+        showLoginDialog = show => () => this.props.ShowLoginDialog(show)
 
-        showLogin = showLogin => () => this.setState({ showLogin })
-
-        showAdmin = showAdmin => () => this.setState({ showAdmin })
+        showRegisterDialog = show => () => this.props.ShowRegisterDialog(show)
 
         render() {
             const {
                 Login,
                 Register,
                 Logout,
+                loginDialog,
+                registerDialog,
                 user,
                 children
             } = this.props
@@ -106,7 +105,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(
                                             <NavDropdown
                                                 id="adminMenu"
                                                 eventKey="Admin"
-                                                onClick={this.showAdmin(true)}
                                                 title="Admin"
                                             >
                                                 <LinkContainer to="/Admin/Posts">
@@ -131,7 +129,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(
                                     :
                                     <NavItem
                                         eventKey="Login"
-                                        onClick={this.showLogin(this.loginState.LOGIN)}
+                                        onClick={this.showLoginDialog(true)}
                                     >
                                         {'Login/Register'}
                                     </NavItem>
@@ -142,15 +140,15 @@ export default connect(mapStateToProps, mapDispatchToProps)(
                     {children}
 
                     <LoginDialog
-                        show={this.state.showLogin === this.loginState.LOGIN}
-                        onHide={this.showLogin(this.loginState.NONE)}
-                        showRegisterDialog={this.showLogin(this.loginState.REGISTER)}
+                        show={loginDialog}
+                        onHide={this.showLoginDialog(false)}
+                        showRegisterDialog={this.showRegisterDialog(true)}
                         login={Login}
                     />
                     <RegisterDialog
-                        show={this.state.showLogin === this.loginState.REGISTER}
-                        onHide={this.showLogin(this.loginState.NONE)}
-                        showLoginDialog={this.showLogin(this.loginState.LOGIN)}
+                        show={registerDialog}
+                        onHide={this.showRegisterDialog(false)}
+                        showLoginDialog={this.showLoginDialog(true)}
                         register={Register}
                     />
                 </React.Fragment>
