@@ -3,7 +3,7 @@ import { Users } from '../../api'
 import { takeLatest, call, put, select } from 'redux-saga/effects'
 import { SetUser, SetUsers, GetUsersFailure, GetUsersRequest, SetLoginDialog, SetRegisterDialog } from './users.actions';
 import { GetPostsRequest } from '../posts/posts.actions';
-import { GetCurrentUser, GetLoginDialogState, GetRegisterDialogState } from '../../main.reducer';
+import { GetLoginDialogState, GetRegisterDialogState } from '../../main.reducer';
 
 export default [
     takeLatest(TYPES.LOGIN, LoginSaga),
@@ -20,6 +20,7 @@ function* LoginSaga({ payload, meta }) {
     if (res && res.status === 200) {
         yield put(SetUser(res.data))
         if (meta) {
+            console.log(meta.props)
             meta.props.onHide()
             meta.setSubmitting(false)
         }
@@ -61,11 +62,6 @@ function* GetUsersSaga() {
 }
 
 function* ShowLoginDialogSaga({ payload }) {
-    const user = yield select(GetCurrentUser)
-
-    if (user.Id)
-        return
-
     if (payload) {
         const registerDialog = yield select(GetRegisterDialogState)
         if (registerDialog)
@@ -76,11 +72,6 @@ function* ShowLoginDialogSaga({ payload }) {
 }
 
 function* ShowRegisterDialogSaga({ payload }) {
-    const user = yield select(GetCurrentUser)
-
-    if (user.Id)
-        return
-
     if (payload) {
         const loginDialog = yield select(GetLoginDialogState)
         if (loginDialog)

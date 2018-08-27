@@ -5,3 +5,11 @@
     padding: 5px 10px;
     text-align: center;
 }
+
+.subscribe-form p {
+    color: #404040;
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 20px;
+    text-align: center;
+}

@@ -11,6 +11,7 @@ p {
 a {
     font-family: 'Dosis', sans-serif;
     text-decoration: none !important;
+    color: #010101;
 }
 
 h1, h2, h3, h4, h5, h6 {

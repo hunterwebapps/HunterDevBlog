@@ -12,11 +12,13 @@ import { history, store } from './store/store'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 import ScrollToTop from './components/shared/ScrollToTop';
+import Portfolio from './components/Portfolio';
 
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
             <ScrollToTop>
+                <Route path="/Services" component={Portfolio} />
                 <Route path="/" component={App} />
             </ScrollToTop>
         </ConnectedRouter>

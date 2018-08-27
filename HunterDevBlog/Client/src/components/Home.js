@@ -15,10 +15,10 @@ function Home() {
         <Grid>
             <Row>
                 <Col xs={12} className="home-text text-center">
-                    <h2 style={{ marginTop: '70px' }}>{SITE_TITLE}</h2>
+                    <h2 style={{ marginTop: '50px' }}>{SITE_TITLE}</h2>
                     <p>{SITE_SLOGAN}</p>
                     <img src={divider} alt="Divider" />
-                    <div className="spacer-8"></div>
+                    <div className="spacer-5"></div>
                     <Featured />
                 </Col>
             </Row>
@@ -27,7 +27,7 @@ function Home() {
                     <FeedContainer />
                 </Col>
                 <Col md={4} lg={3}>
-                    <Sidebar recentCount={3} />
+                    <Sidebar recentCount={5} />
                 </Col>
             </Row>
         </Grid>

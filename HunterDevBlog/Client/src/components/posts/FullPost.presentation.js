@@ -39,7 +39,7 @@ function FullPost({ post }) {
                     <p dangerouslySetInnerHTML={{ __html: post.Content }}></p>
                 </Col>
                 <Col md={4} lg={3} style={{ height: '100%' }}>
-                    <Sidebar recentCount={3} />
+                    <Sidebar recentCount={5} />
                 </Col>
             </Row>
         </Grid>

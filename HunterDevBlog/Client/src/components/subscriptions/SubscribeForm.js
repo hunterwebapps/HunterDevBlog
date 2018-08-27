@@ -22,7 +22,7 @@ function SubscribeForm({ errors, touched, dirty, isSubmitting, isValid }) {
     return (
         <div className="subscribe-form">
             <h1>Subscribe</h1>
-            <p></p>
+            <p>Stay up to date!<br />Get all the latest & greatest posts delivered straight to your inbox.</p>
             <Form>
                 <Textbox
                     name="EmailAddress"

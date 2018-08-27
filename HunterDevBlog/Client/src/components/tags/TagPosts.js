@@ -32,7 +32,7 @@ function TagPosts({ posts, match }) {
                     <FeedPresentation posts={posts} />
                 </Col>
                 <Col md={4} lg={3}>
-                    <Sidebar recentCount={3} />
+                    <Sidebar recentCount={5} />
                 </Col>
             </Row>
         </Grid>

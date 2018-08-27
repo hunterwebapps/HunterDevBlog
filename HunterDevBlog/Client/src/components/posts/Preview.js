@@ -38,10 +38,12 @@ function Preview({ post }) {
                     <img src={divider} alt="Divider" />
                     {post.CreatedBy &&
                         <h5 className="text-muted">
-                            {`by ${post.CreatedBy.FullName} On ${post.TimeCreated || 'Now'}`}
+                            {`by `}<strong>{post.CreatedBy.FullName}</strong>
+                            {` on `}<strong>{post.TimeCreated || 'Now'}</strong>
                         </h5>
                     }
                     <p dangerouslySetInnerHTML={{ __html: post.Preview }} />
+
                     <PostLink id={post.Id} title={post.Title}>
                         <Button
                             bsStyle="primary"

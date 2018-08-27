@@ -10,9 +10,7 @@ namespace HunterDevBlog.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
-            return View();
+            return File("~/Client/build/index.html", "text/html");
         }
     }
 }

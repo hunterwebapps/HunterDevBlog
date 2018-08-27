@@ -13,22 +13,26 @@ class App extends React.Component {
     render() {
         return (
             <Layout>
-                <TransitionGroup style={this.props.location.pathname === '/' ? { height: '100%' } : {}}>
-                    <CSSTransition
-                        key={this.props.location.pathname}
-                        classNames="fade"
-                        timeout={500}
-                        mountOnEnter
-                        unmountOnExit
-                    >
-                        <Switch location={this.props.location}>
-                            <Route exact path="/" render={() => <div className="absoluteFull"><Home /></div>} />
-                            <Route path="/Post/:id" render={() => <div className="absoluteFull"><FullPost /></div>} />
-                            <Route path="/Tag/:tag" render={() => <div className="absoluteFull"><TagPosts /></div>} />
-                            <Route path="/Admin/Posts" render={() => <div className="absoluteFull"><PostsAdmin /></div>} />
-                        </Switch>
-                    </CSSTransition>
-                </TransitionGroup>
+                {user =>
+                    <TransitionGroup style={this.props.location.pathname === '/' ? { height: '100%' } : {}}>
+                        <CSSTransition
+                            key={this.props.location.pathname}
+                            classNames="fade"
+                            timeout={500}
+                            mountOnEnter
+                            unmountOnExit
+                        >
+                            <Switch location={this.props.location}>
+                                <Route exact path="/" render={() => <div className="absoluteFull"><Home /></div>} />
+                                <Route path="/Post/:id" render={() => <div className="absoluteFull"><FullPost /></div>} />
+                                <Route path="/Tag/:tag" render={() => <div className="absoluteFull"><TagPosts /></div>} />
+                                {user.Administrator &&
+                                    <Route path="/Admin/Posts" render={() => <div className="absoluteFull"><PostsAdmin /></div>} />
+                                }
+                            </Switch>
+                        </CSSTransition>
+                    </TransitionGroup>
+                }
             </Layout>
         );
     }

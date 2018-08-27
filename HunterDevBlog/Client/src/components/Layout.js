@@ -67,6 +67,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 
         showRegisterDialog = show => () => this.props.ShowRegisterDialog(show)
 
+        handleLoginClick = e => {
+            if (e.ctrlKey && e.altKey && e.shiftKey)
+                this.showLoginDialog(true)()
+        }
+
         render() {
             const {
                 Login,
@@ -79,7 +84,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(
             } = this.props
             return (
                 <React.Fragment>
-                    <Navbar collapseOnSelect style={navbarStyle}>
+                    <Navbar
+                        collapseOnSelect
+                        style={navbarStyle}
+                        onClick={this.handleLoginClick}
+                    >
                         <Navbar.Header>
                             <Navbar.Brand>
                                 <Link to="/">
@@ -94,12 +103,17 @@ export default connect(mapStateToProps, mapDispatchToProps)(
                         </Navbar.Header>
                         <Navbar.Collapse>
                             <Nav>
-                                <LinkContainer to="/About">
+                                {/*<LinkContainer to="/About">
                                     <NavItem eventKey="about">
                                         {'The Author'}
                                     </NavItem>
+                                </LinkContainer>*/}
+                                <LinkContainer to="/Services">
+                                    <NavItem eventKey="services">
+                                        {'Services'}
+                                    </NavItem>
                                 </LinkContainer>
-                                {user.Username ?
+                                {user.Username &&
                                     <React.Fragment>
                                         {user.Administrator &&
                                             <NavDropdown
@@ -126,18 +140,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(
                                             {'Logout'}
                                         </NavItem>
                                     </React.Fragment>
-                                    :
-                                    <NavItem
-                                        eventKey="Login"
-                                        onClick={this.showLoginDialog(true)}
-                                    >
-                                        {'Login/Register'}
-                                    </NavItem>
                                 }
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
-                    {children}
+                    {children(user)}
 
                     <LoginDialog
                         show={loginDialog}
